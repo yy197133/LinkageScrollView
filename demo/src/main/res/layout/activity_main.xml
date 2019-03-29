@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yoy.linkagescrollview.LinkageScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linkage_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:content_title_layout="@layout/layout_content_title"
+    app:name_title_layout="@layout/layout_name_title"
+    >
+
+</com.yoy.linkagescrollview.LinkageScrollView>
