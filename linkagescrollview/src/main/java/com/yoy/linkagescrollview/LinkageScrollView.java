@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yoy.linkagescrollview.listener.OnRecyclerItemClickListener;
 import com.yoy.linkagescrollview.widget.ListenedHorizontalScrollView;
 
@@ -26,9 +27,11 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
     private RecyclerView mNameRv,mContentRv,mTouchedRv, mAnotherRv;
     private ListenedHorizontalScrollView mContentTitleHs, mContentHs;
     private LinearLayout mTitleLl,mContentTitleLl;
+    private SmartRefreshLayout mRefreshLayout;
 
     private int contentTitleViewId = 0;
     private int nameTitleViewId = 0;
+    private boolean isRefreshEnable = false;
 
     private List<String> titles;
 
@@ -65,7 +68,8 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
         mContentHs = findViewById(R.id.linkage_content_hs);
         mTitleLl = findViewById(R.id.linkage_title_ll);
         mContentTitleLl = findViewById(R.id.linkage_content_title_ll);
-
+        mRefreshLayout = findViewById(R.id.linkage_smart_refresh_layout);
+        mRefreshLayout.setNestedScrollingEnabled(false);
 
 
         if (attrs != null){
@@ -73,10 +77,13 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
             try {
                 contentTitleViewId = a.getResourceId(R.styleable.LinkageScrollView_content_title_layout,0);
                 nameTitleViewId = a.getResourceId(R.styleable.LinkageScrollView_name_title_layout,0);
+                isRefreshEnable = a.getBoolean(R.styleable.LinkageScrollView_refresh_enable,false);
             }finally {
                 a.recycle();
             }
         }
+
+        mRefreshLayout.setEnabled(isRefreshEnable);
 
         setViewsToLinkage();
 
@@ -182,6 +189,15 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
 
     public RecyclerView getContentRecyclerView() {
         return mContentRv;
+    }
+
+    public SmartRefreshLayout getRefreshLayout() {
+        return mRefreshLayout;
+    }
+
+    public void setRefreshEnable(boolean refreshEnable) {
+        this.isRefreshEnable = refreshEnable;
+        mRefreshLayout.setEnabled(refreshEnable);
     }
 
     public void setOnTitleClickListener(OnTitleClickListener onTitleClickListener) {

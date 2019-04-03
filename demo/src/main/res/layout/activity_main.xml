@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.yoy.linkagescrollview.LinkageScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linkage_smart_refresh_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/linkage_scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:content_title_layout="@layout/layout_content_title"
-    app:name_title_layout="@layout/layout_name_title"
-    >
+    android:layout_height="match_parent">
 
-</com.yoy.linkagescrollview.LinkageScrollView>
+    <com.yoy.linkagescrollview.LinkageScrollView
+
+        android:id="@+id/linkage_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:content_title_layout="@layout/layout_content_title"
+        app:name_title_layout="@layout/layout_name_title"
+        app:refresh_enable="false">
+
+    </com.yoy.linkagescrollview.LinkageScrollView>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

@@ -3,5 +3,6 @@
     <declare-styleable name="LinkageScrollView">
         <attr name="content_title_layout" format="reference"/>
         <attr name="name_title_layout" format="reference"/>
+        <attr name="refresh_enable" format="boolean"/>
     </declare-styleable>
 </resources>

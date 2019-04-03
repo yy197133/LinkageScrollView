@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yoy.demo.Bean.DataBean;
 import com.yoy.demo.adapter.FundsContentAdapter;
 import com.yoy.demo.adapter.FundsNameAdapter;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mNameRv,mContentRv;
     private FundsNameAdapter mNameAdapter;
     private FundsContentAdapter mContentAdapter;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mRefreshLayout = findViewById(R.id.linkage_smart_refresh_layout);
+        mRefreshLayout.setNestedScrollingEnabled(false);
         mLinkageScrollView = findViewById(R.id.linkage_scroll_view);
         mLinkageScrollView.setTitles(titles);
 

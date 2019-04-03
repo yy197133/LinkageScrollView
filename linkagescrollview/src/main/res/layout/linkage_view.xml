@@ -33,49 +33,49 @@
     </LinearLayout>
 
 
-    <!--<com.scwang.smartrefresh.layout.SmartRefreshLayout-->
-    <!--android:id="@+id/mPTRLayout"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-
-    <LinearLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/linkage_smart_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:splitMotionEvents="false"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/linkage_name_rv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:overScrollMode="never">
-
-        </android.support.v7.widget.RecyclerView>
-
-
-        <com.yoy.linkagescrollview.widget.ListenedHorizontalScrollView
-            android:id="@+id/linkage_content_hs"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none">
+            android:orientation="horizontal"
+            android:splitMotionEvents="false">
+
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/linkage_content_rv"
+                android:id="@+id/linkage_name_rv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:overScrollMode="never">
 
             </android.support.v7.widget.RecyclerView>
 
-        </com.yoy.linkagescrollview.widget.ListenedHorizontalScrollView>
+
+            <com.yoy.linkagescrollview.widget.ListenedHorizontalScrollView
+                android:id="@+id/linkage_content_hs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/linkage_content_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </com.yoy.linkagescrollview.widget.ListenedHorizontalScrollView>
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <!--</com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 
 </LinearLayout>
