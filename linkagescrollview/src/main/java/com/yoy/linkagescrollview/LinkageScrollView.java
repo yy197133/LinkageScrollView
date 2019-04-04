@@ -164,7 +164,7 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
         if (mOnTitleClickListener != null){
             TextView tv = (TextView) v;
             for (int i=0;i<titles.size();++i){
-                if (tv.getText().equals(titles.get(i))){
+                if (tv.getText().toString().equals(titles.get(i))){
                     mOnTitleClickListener.onTitleClick(v,i);
                 }
             }
