@@ -195,6 +195,14 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
         return mRefreshLayout;
     }
 
+    public ListenedHorizontalScrollView getTitleHorizontalScrollView() {
+        return mContentTitleHs;
+    }
+
+    public ListenedHorizontalScrollView getContentHorizontalScrollView() {
+        return mContentHs;
+    }
+
     public void setRefreshEnable(boolean refreshEnable) {
         this.isRefreshEnable = refreshEnable;
         mRefreshLayout.setEnabled(refreshEnable);
