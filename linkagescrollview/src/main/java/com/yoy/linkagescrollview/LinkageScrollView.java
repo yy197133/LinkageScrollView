@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,13 +32,13 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
 
     private int contentTitleViewId = 0;
     private int nameTitleViewId = 0;
+    private int nameWidth;
     private boolean isRefreshEnable = false;
 
     private List<String> titles;
 
     private OnTitleClickListener mOnTitleClickListener;
     private OnItemClickListener mOnItemClickListener;
-
 
 
     public interface OnTitleClickListener{
@@ -71,17 +72,19 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
         mRefreshLayout = findViewById(R.id.linkage_smart_refresh_layout);
         mRefreshLayout.setNestedScrollingEnabled(false);
 
-
         if (attrs != null){
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LinkageScrollView,0,0);
             try {
                 contentTitleViewId = a.getResourceId(R.styleable.LinkageScrollView_content_title_layout,0);
                 nameTitleViewId = a.getResourceId(R.styleable.LinkageScrollView_name_title_layout,0);
+                nameWidth = (int) a.getDimension(R.styleable.LinkageScrollView_name_width,300);
                 isRefreshEnable = a.getBoolean(R.styleable.LinkageScrollView_refresh_enable,false);
             }finally {
                 a.recycle();
             }
         }
+
+        setNameContentWidth(nameWidth);
 
         mRefreshLayout.setEnabled(isRefreshEnable);
 
@@ -89,7 +92,15 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
 
     }
 
+    private void setNameTitleWidth(int width){
+        LinearLayout.LayoutParams params = (LayoutParams) mTitleLl.getChildAt(0).getLayoutParams();
+        params.width = width;
+    }
 
+    private void setNameContentWidth(int width){
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mContentHs.getLayoutParams();
+        params.leftMargin = width;
+    }
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -108,6 +119,8 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
     private void inflateNameTitle(){
         if (nameTitleViewId != 0 && titles.size() > 0){
             TextView textView = (TextView) mInflater.inflate(nameTitleViewId,mTitleLl,false);
+            LinearLayout.LayoutParams params = (LayoutParams) textView.getLayoutParams();
+            params.width = nameWidth;
             textView.setText(titles.get(0));
             textView.setOnClickListener(this);
             mTitleLl.addView(textView,0);
@@ -224,4 +237,17 @@ public class LinkageScrollView extends LinearLayout implements View.OnClickListe
         inflateNameTitle();
         inflateContentTitle();
     }
+
+    public void scrollToPosition(int position){
+        mNameRv.scrollToPosition(position);
+        mContentRv.scrollToPosition(position);
+    }
+
+    public void setNameWidth(int width){
+        this.nameWidth = width;
+        setNameTitleWidth(nameWidth);
+        setNameContentWidth(nameWidth);
+        invalidate();
+    }
+
 }
